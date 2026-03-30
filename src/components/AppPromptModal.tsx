@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { getDownloadUrl } from "@/lib/utils";
 
 interface AppPromptModalProps {
@@ -8,6 +9,14 @@ interface AppPromptModalProps {
 }
 
 export default function AppPromptModal({ message, onClose }: AppPromptModalProps) {
+  // Disable background scroll when modal is open
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40"
@@ -25,7 +34,7 @@ export default function AppPromptModal({ message, onClose }: AppPromptModalProps
         </p>
 
         <div className="flex flex-col gap-3">
-          {/* iOS - Active */}
+          {/* iOS */}
           <a
             href={getDownloadUrl()}
             className="w-full flex items-center justify-center gap-2.5 py-3 rounded-xl bg-[--color-text-primary] text-white text-sm font-semibold hover:opacity-90 transition-opacity"
