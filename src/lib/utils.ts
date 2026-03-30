@@ -21,12 +21,9 @@ export function kmToMiles(km: number): string {
   return (km * 0.621371).toFixed(1);
 }
 
-export const APP_STORE_URL = "#";
-export const PLAY_STORE_URL = "#";
+// Update this with your actual App Store URL once published
+export const APP_STORE_URL = "https://apps.apple.com/app/desisphere";
 
 export function getDownloadUrl(): string {
-  if (typeof window === "undefined") return PLAY_STORE_URL;
-  const ua = navigator.userAgent.toLowerCase();
-  if (ua.includes("iphone") || ua.includes("ipad")) return APP_STORE_URL;
-  return PLAY_STORE_URL;
+  return APP_STORE_URL;
 }
