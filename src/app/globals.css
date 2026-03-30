@@ -2,4 +2,43 @@
 
 @theme inline {
   --font-sans: var(--font-inter);
+  --color-primary: #FF385C;
+  --color-primary-dark: #E31C5F;
+  --color-primary-light: #FF385C1A;
+  --color-text-primary: #222222;
+  --color-text-secondary: #717171;
+  --color-text-tertiary: #B0B0B0;
+  --color-border: #DDDDDD;
+  --color-border-light: #EBEBEB;
+  --color-surface: #FFFFFF;
+  --color-background: #FFFFFF;
+  --color-hover: #F7F7F7;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: var(--color-text-primary);
+  background: var(--color-background);
+}
+
+/* Airbnb-style scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  border-radius: 3px;
+}
+
+/* Smooth image carousel transitions */
+.carousel-snap {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.carousel-snap > * {
+  scroll-snap-align: start;
 }

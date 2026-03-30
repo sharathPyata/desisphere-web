@@ -82,7 +82,6 @@ export default function ExploreContent() {
     []
   );
 
-  // Load the active tab when it changes or hasn't been loaded yet
   useEffect(() => {
     if (!loadedTabs.has(activeTab)) {
       loadTab(activeTab, location.lat, location.lng);
@@ -99,25 +98,25 @@ export default function ExploreContent() {
   const isLoading = loading[activeTab];
 
   return (
-    <div className="min-h-screen bg-neutral-50 dark:bg-black pb-20">
+    <div className="min-h-screen bg-white pb-20">
       <Header
         locationName={location.name}
         onLocationChange={handleLocationChange}
       />
       <ExploreTabs activeTab={activeTab} onTabChange={setActiveTab} />
 
-      <main className="max-w-2xl mx-auto">
+      <main className="max-w-6xl mx-auto px-6 pt-6">
         {isLoading ? (
-          <div className="flex flex-col items-center justify-center py-20">
-            <div className="w-8 h-8 border-2 border-neutral-300 dark:border-neutral-600 border-t-blue-600 dark:border-t-blue-400 rounded-full animate-spin" />
-            <p className="mt-3 text-sm text-neutral-500 dark:text-neutral-400">
+          <div className="flex flex-col items-center justify-center py-24">
+            <div className="w-10 h-10 border-[3px] border-[--color-border-light] border-t-[--color-primary] rounded-full animate-spin" />
+            <p className="mt-4 text-sm text-[--color-text-secondary]">
               Loading nearby {activeTab === "food" ? "restaurants" : activeTab}...
             </p>
           </div>
         ) : currentItems.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20">
+          <div className="flex flex-col items-center justify-center py-24">
             <svg
-              className="w-12 h-12 text-neutral-300 dark:text-neutral-600 mb-3"
+              className="w-16 h-16 text-[--color-border] mb-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -125,46 +124,53 @@ export default function ExploreContent() {
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth={1.5}
+                strokeWidth={1}
                 d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
               />
             </svg>
-            <p className="text-sm font-medium text-neutral-900 dark:text-white">
+            <p className="text-base font-semibold text-[--color-text-primary]">
               No {activeTab === "food" ? "restaurants" : activeTab} nearby
             </p>
-            <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
-              Try a different location
+            <p className="text-sm text-[--color-text-secondary] mt-1">
+              Try searching a different location
             </p>
           </div>
         ) : (
           <>
-            {currentItems.map((item) => {
-              const isRestaurant = "businessName" in item;
-              return (
-                <ListingCard
-                  key={item.id}
-                  name={isRestaurant ? (item as Restaurant).businessName : (item as Home | Service | Event).userName}
-                  type={
-                    isRestaurant
-                      ? (item as Restaurant).businessType
-                      : "homeType" in item
-                        ? (item as Home).homeType
-                        : "serviceType" in item
-                          ? (item as Service).serviceType
-                          : (item as Event).eventType
-                  }
-                  profilePicUrl={item.profilePicUrl}
-                  imageUrls={item.imageUrls}
-                  description={item.description}
-                  distance={item.distance}
-                  updatedAt={item.updatedAt}
-                  favoritesCount={item.favoritesCount}
-                  onImageClick={(images, index) =>
-                    setViewer({ images, index })
-                  }
-                />
-              );
-            })}
+            {/* Airbnb-style responsive grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-10">
+              {currentItems.map((item) => {
+                const isRestaurant = "businessName" in item;
+                return (
+                  <ListingCard
+                    key={item.id}
+                    name={
+                      isRestaurant
+                        ? (item as Restaurant).businessName
+                        : (item as Home | Service | Event).userName
+                    }
+                    type={
+                      isRestaurant
+                        ? (item as Restaurant).businessType
+                        : "homeType" in item
+                          ? (item as Home).homeType
+                          : "serviceType" in item
+                            ? (item as Service).serviceType
+                            : (item as Event).eventType
+                    }
+                    profilePicUrl={item.profilePicUrl}
+                    imageUrls={item.imageUrls}
+                    description={item.description}
+                    distance={item.distance}
+                    updatedAt={item.updatedAt}
+                    favoritesCount={item.favoritesCount}
+                    onImageClick={(images, index) =>
+                      setViewer({ images, index })
+                    }
+                  />
+                );
+              })}
+            </div>
             <AppDownloadBanner />
           </>
         )}
