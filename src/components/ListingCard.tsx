@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import ImageCarousel from "./ImageCarousel";
-import { getRelativeTimeString, kmToMiles, getDownloadUrl } from "@/lib/utils";
+import { kmToMiles } from "@/lib/utils";
 
 interface ListingCardProps {
   name: string;
@@ -14,23 +14,19 @@ interface ListingCardProps {
   updatedAt: number;
   favoritesCount: number;
   onImageClick: (images: string[], index: number) => void;
+  onAppPrompt: (message: string) => void;
 }
 
 export default function ListingCard({
   name,
-  type,
   profilePicUrl,
   imageUrls,
   description,
   distance,
-  updatedAt,
   favoritesCount,
   onImageClick,
+  onAppPrompt,
 }: ListingCardProps) {
-  const handleAppRedirect = () => {
-    window.location.href = getDownloadUrl();
-  };
-
   return (
     <article className="bg-white">
       {/* Header: profile pic + name + distance + more */}
@@ -68,7 +64,7 @@ export default function ListingCard({
         </button>
       </div>
 
-      {/* Image Carousel - edge to edge with small horizontal padding */}
+      {/* Image Carousel */}
       <div className="px-3">
         <ImageCarousel
           images={imageUrls}
@@ -81,7 +77,7 @@ export default function ListingCard({
       <div className="flex items-center justify-between px-4 py-2">
         <div className="flex items-center gap-1.5">
           <button
-            onClick={handleAppRedirect}
+            onClick={() => onAppPrompt("Save your favourite listings and never miss an update. Download the app to start building your wishlist.")}
             className="text-[--color-text-primary] hover:text-[--color-primary] transition-colors"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">

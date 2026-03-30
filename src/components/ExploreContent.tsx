@@ -14,6 +14,7 @@ import ListingCard from "./ListingCard";
 import AppDownloadBanner from "./AppDownloadBanner";
 import BottomNav from "./BottomNav";
 import FullScreenImageViewer from "./FullScreenImageViewer";
+import AppPromptModal from "./AppPromptModal";
 
 const DEFAULT_LOCATION = { name: "Charlotte", lat: 35.2271, lng: -80.8431 };
 
@@ -51,6 +52,7 @@ export default function ExploreContent() {
     images: string[];
     index: number;
   } | null>(null);
+  const [promptMessage, setPromptMessage] = useState<string | null>(null);
 
   const loadTab = useCallback(
     async (tab: TabType, lat: number, lng: number) => {
@@ -165,6 +167,7 @@ export default function ExploreContent() {
                   onImageClick={(images, index) =>
                     setViewer({ images, index })
                   }
+                  onAppPrompt={(msg) => setPromptMessage(msg)}
                 />
               );
             })}
@@ -173,13 +176,23 @@ export default function ExploreContent() {
         )}
       </main>
 
-      <BottomNav currentTab="explore" />
+      <BottomNav
+        currentTab="explore"
+        onAppPrompt={(msg) => setPromptMessage(msg)}
+      />
 
       {viewer && (
         <FullScreenImageViewer
           images={viewer.images}
           initialIndex={viewer.index}
           onClose={() => setViewer(null)}
+        />
+      )}
+
+      {promptMessage && (
+        <AppPromptModal
+          message={promptMessage}
+          onClose={() => setPromptMessage(null)}
         />
       )}
     </div>

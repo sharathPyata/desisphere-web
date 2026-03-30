@@ -1,19 +1,13 @@
 "use client";
 
-import { getDownloadUrl } from "@/lib/utils";
-
 interface BottomNavProps {
   currentTab: "explore" | "favourites" | "profile";
+  onAppPrompt: (message: string) => void;
 }
 
-export default function BottomNav({ currentTab }: BottomNavProps) {
-  const handleAppRedirect = () => {
-    window.location.href = getDownloadUrl();
-  };
-
+export default function BottomNav({ currentTab, onAppPrompt }: BottomNavProps) {
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-30 bg-white">
-      {/* Top separator line */}
       <div className="h-[0.5px] bg-neutral-200" />
       <div className="max-w-2xl mx-auto flex items-center justify-center gap-16 h-[56px]">
         {/* Explore */}
@@ -48,7 +42,7 @@ export default function BottomNav({ currentTab }: BottomNavProps) {
 
         {/* Favourites */}
         <button
-          onClick={handleAppRedirect}
+          onClick={() => onAppPrompt("Save your favourite listings and never miss an update. Download the app to start building your wishlist.")}
           className="flex flex-col items-center gap-0.5"
         >
           <svg
@@ -71,7 +65,7 @@ export default function BottomNav({ currentTab }: BottomNavProps) {
 
         {/* Profile */}
         <button
-          onClick={handleAppRedirect}
+          onClick={() => onAppPrompt("Create your profile, manage your listings, and connect with the community. Download the app to get started.")}
           className="flex flex-col items-center gap-0.5"
         >
           <svg
