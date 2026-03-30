@@ -19,9 +19,9 @@ export default function ImageCarousel({
 
   if (validImages.length === 0) {
     return (
-      <div className="w-full aspect-[4/3] bg-[--color-border-light] rounded-xl flex items-center justify-center">
+      <div className="w-full aspect-square bg-[--color-border-light] rounded-lg flex items-center justify-center">
         <svg
-          className="w-10 h-10 text-[--color-text-tertiary]"
+          className="w-12 h-12 text-[--color-text-tertiary]"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -40,20 +40,20 @@ export default function ImageCarousel({
   return (
     <div className="relative group">
       <div
-        className="w-full aspect-[4/3] rounded-xl overflow-hidden cursor-pointer bg-[--color-border-light]"
+        className="w-full aspect-square rounded-lg overflow-hidden cursor-pointer bg-[--color-border-light]"
         onClick={() => onImageClick(currentIndex)}
       >
         <Image
           src={validImages[currentIndex]}
           alt={`${altPrefix} image ${currentIndex + 1}`}
           fill
-          className="object-cover transition-transform duration-300"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover"
+          sizes="(max-width: 672px) 100vw, 640px"
           unoptimized
         />
       </div>
 
-      {/* Navigation arrows — visible on hover */}
+      {/* Navigation arrows */}
       {validImages.length > 1 && (
         <>
           {currentIndex > 0 && (
@@ -62,7 +62,7 @@ export default function ImageCarousel({
                 e.stopPropagation();
                 setCurrentIndex((prev) => prev - 1);
               }}
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:scale-105"
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:scale-105"
             >
               <svg className="w-3 h-3 text-[--color-text-primary]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
@@ -75,7 +75,7 @@ export default function ImageCarousel({
                 e.stopPropagation();
                 setCurrentIndex((prev) => prev + 1);
               }}
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:scale-105"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:scale-105"
             >
               <svg className="w-3 h-3 text-[--color-text-primary]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
@@ -87,18 +87,15 @@ export default function ImageCarousel({
 
       {/* Dots indicator */}
       {validImages.length > 1 && (
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+        <div className="flex justify-center gap-1.5 mt-2">
           {validImages.map((_, i) => (
             <button
               key={i}
-              onClick={(e) => {
-                e.stopPropagation();
-                setCurrentIndex(i);
-              }}
-              className={`w-1.5 h-1.5 rounded-full transition-all ${
+              onClick={() => setCurrentIndex(i)}
+              className={`w-1.5 h-1.5 rounded-full transition-colors ${
                 i === currentIndex
-                  ? "bg-white w-2"
-                  : "bg-white/60"
+                  ? "bg-[--color-primary]"
+                  : "bg-[--color-border]"
               }`}
             />
           ))}
