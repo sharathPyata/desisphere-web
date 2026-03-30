@@ -28,7 +28,7 @@ export default function ListingCard({
   onAppPrompt,
 }: ListingCardProps) {
   return (
-    <article className="bg-white">
+    <article className="bg-[--color-background]">
       {/* Header: profile pic + name + distance + more */}
       <div className="flex items-center gap-3 px-4 py-2.5">
         <div className="w-10 h-10 rounded-full overflow-hidden bg-neutral-100 flex-shrink-0">

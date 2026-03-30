@@ -16,7 +16,7 @@ interface LocationSearchProps {
 
 export default function LocationSearch({ onSelect, onClose }: LocationSearchProps) {
   return (
-    <div className="fixed inset-0 z-50 bg-white">
+    <div className="fixed inset-0 z-50 bg-[--color-background]">
       <div className="max-w-lg mx-auto">
         {/* Header */}
         <div className="flex items-center gap-4 px-6 h-16 border-b border-[--color-border-light]">

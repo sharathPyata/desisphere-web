@@ -100,7 +100,7 @@ export default function ExploreContent() {
   const isLoading = loading[activeTab];
 
   return (
-    <div className="min-h-screen bg-white pb-20">
+    <div className="min-h-screen bg-[--color-background] pb-20">
       <Header
         locationName={location.name}
         onLocationChange={handleLocationChange}

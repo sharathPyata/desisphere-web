@@ -16,7 +16,7 @@ const TABS: { key: TabType; label: string }[] = [
 
 export default function ExploreTabs({ activeTab, onTabChange }: ExploreTabsProps) {
   return (
-    <div className="sticky top-[62px] z-20 bg-white">
+    <div className="sticky top-[62px] z-20 bg-[--color-background]">
       <div className="max-w-2xl mx-auto flex items-end px-4">
         {TABS.map((tab) => (
           <button
