@@ -13,7 +13,7 @@ export default function BottomNav({ currentTab }: BottomNavProps) {
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-30 bg-white border-t border-[--color-border-light]">
-      <div className="max-w-2xl mx-auto flex items-center justify-around h-[60px]">
+      <div className="max-w-2xl mx-auto flex items-center justify-center gap-16 h-[60px]">
         {/* Explore */}
         <div className="flex flex-col items-center gap-0.5 cursor-pointer">
           <svg
