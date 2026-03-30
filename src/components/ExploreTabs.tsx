@@ -16,13 +16,13 @@ const TABS: { key: TabType; label: string }[] = [
 
 export default function ExploreTabs({ activeTab, onTabChange }: ExploreTabsProps) {
   return (
-    <div className="sticky top-14 z-20 bg-white border-b border-[--color-border-light]">
-      <div className="max-w-2xl mx-auto flex">
+    <div className="sticky top-[68px] z-20 bg-white border-b border-[--color-border-light]">
+      <div className="max-w-2xl mx-auto flex items-end px-4">
         {TABS.map((tab) => (
           <button
             key={tab.key}
             onClick={() => onTabChange(tab.key)}
-            className={`flex-1 py-3 text-sm font-medium text-center relative transition-colors ${
+            className={`flex-1 pb-2.5 pt-2 text-xs font-semibold text-center relative transition-colors tracking-wide ${
               activeTab === tab.key
                 ? "text-[--color-text-primary]"
                 : "text-[--color-text-secondary] hover:text-[--color-text-primary]"
@@ -30,7 +30,7 @@ export default function ExploreTabs({ activeTab, onTabChange }: ExploreTabsProps
           >
             {tab.label}
             {activeTab === tab.key && (
-              <span className="absolute bottom-0 left-[10%] right-[10%] h-0.5 bg-[--color-primary] rounded-full" />
+              <span className="absolute bottom-0 left-[15%] right-[15%] h-[2px] bg-[--color-text-primary] rounded-full" />
             )}
           </button>
         ))}

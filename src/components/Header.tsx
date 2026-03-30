@@ -13,48 +13,29 @@ export default function Header({ locationName, onLocationChange }: HeaderProps) 
 
   return (
     <>
-      <header className="sticky top-0 z-30 bg-white border-b border-[--color-border-light]">
-        <div className="max-w-2xl mx-auto flex items-center justify-between px-4 h-14">
-          <h1 className="text-lg font-bold tracking-tight text-[--color-primary]">
-            DesiSphere
-          </h1>
+      <header className="sticky top-0 z-30 bg-white">
+        <div className="max-w-2xl mx-auto px-4 pt-3 pb-2">
+          {/* Airbnb-style pill search bar */}
           <button
             onClick={() => setShowSearch(true)}
-            className="flex items-center gap-1.5 text-sm text-[--color-text-secondary] hover:text-[--color-text-primary] transition-colors"
+            className="w-full flex items-center gap-3 border border-[--color-border] rounded-full px-5 py-3.5 shadow-sm hover:shadow-md transition-shadow bg-white"
           >
             <svg
-              className="w-4 h-4"
+              className="w-5 h-5 text-[--color-text-primary] flex-shrink-0"
               fill="none"
               stroke="currentColor"
+              strokeWidth={2.5}
               viewBox="0 0 24 24"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
             </svg>
-            <span className="max-w-[140px] truncate">{locationName}</span>
-            <svg
-              className="w-3 h-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
+            <span className="text-[15px] font-medium text-[--color-text-primary]">
+              {locationName}
+            </span>
           </button>
         </div>
       </header>
