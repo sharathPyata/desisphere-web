@@ -15,13 +15,12 @@ export default function Header({ locationName, onLocationChange }: HeaderProps) 
     <>
       <header className="sticky top-0 z-30 bg-white">
         <div className="max-w-2xl mx-auto px-4 pt-3 pb-2">
-          {/* Airbnb-style pill search bar */}
           <button
             onClick={() => setShowSearch(true)}
-            className="w-full flex items-center gap-3 border border-[--color-border] rounded-full px-5 py-3.5 shadow-sm hover:shadow-md transition-shadow bg-white"
+            className="w-full flex items-center justify-center gap-3 border border-neutral-200 rounded-full px-5 py-3 shadow-[0_1px_4px_rgba(0,0,0,0.08)] hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] transition-shadow bg-white"
           >
             <svg
-              className="w-5 h-5 text-[--color-text-primary] flex-shrink-0"
+              className="w-[18px] h-[18px] text-[--color-text-primary] flex-shrink-0"
               fill="none"
               stroke="currentColor"
               strokeWidth={2.5}

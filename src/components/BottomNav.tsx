@@ -12,31 +12,33 @@ export default function BottomNav({ currentTab }: BottomNavProps) {
   };
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-30 bg-white border-t border-[--color-border-light]">
-      <div className="max-w-2xl mx-auto flex items-center justify-center gap-16 h-[60px]">
+    <nav className="fixed bottom-0 left-0 right-0 z-30 bg-white">
+      {/* Top separator line */}
+      <div className="h-[0.5px] bg-neutral-200" />
+      <div className="max-w-2xl mx-auto flex items-center justify-center gap-16 h-[56px]">
         {/* Explore */}
         <div className="flex flex-col items-center gap-0.5 cursor-pointer">
           <svg
-            className={`w-6 h-6 ${
+            className={`w-[22px] h-[22px] ${
               currentTab === "explore"
-                ? "text-[--color-primary]"
+                ? "text-[--color-text-primary]"
                 : "text-[--color-text-tertiary]"
             }`}
-            fill="none"
+            fill={currentTab === "explore" ? "currentColor" : "none"}
             stroke="currentColor"
-            strokeWidth={currentTab === "explore" ? 2.5 : 1.5}
+            strokeWidth={currentTab === "explore" ? 0 : 1.5}
             viewBox="0 0 24 24"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"
             />
           </svg>
           <span
             className={`text-[10px] ${
               currentTab === "explore"
-                ? "text-[--color-primary] font-bold"
+                ? "text-[--color-text-primary] font-semibold"
                 : "text-[--color-text-tertiary] font-medium"
             }`}
           >
@@ -50,7 +52,7 @@ export default function BottomNav({ currentTab }: BottomNavProps) {
           className="flex flex-col items-center gap-0.5"
         >
           <svg
-            className="w-6 h-6 text-[--color-text-tertiary]"
+            className="w-[22px] h-[22px] text-[--color-text-tertiary]"
             fill="none"
             stroke="currentColor"
             strokeWidth={1.5}
@@ -73,7 +75,7 @@ export default function BottomNav({ currentTab }: BottomNavProps) {
           className="flex flex-col items-center gap-0.5"
         >
           <svg
-            className="w-6 h-6 text-[--color-text-tertiary]"
+            className="w-[22px] h-[22px] text-[--color-text-tertiary]"
             fill="none"
             stroke="currentColor"
             strokeWidth={1.5}
