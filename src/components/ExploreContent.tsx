@@ -117,19 +117,6 @@ export default function ExploreContent() {
           </div>
         ) : currentItems.length === 0 ? (
           <div className="flex flex-col items-center justify-center min-h-[calc(100vh-190px)]">
-            <svg
-              className="w-12 h-12 text-[--color-border] mb-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-              />
-            </svg>
             <p className="text-sm font-medium text-[--color-text-primary]">
               No {activeTab === "food" ? "restaurants" : activeTab} nearby
             </p>
