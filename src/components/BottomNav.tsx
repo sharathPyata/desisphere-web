@@ -7,7 +7,7 @@ interface BottomNavProps {
 
 export default function BottomNav({ currentTab, onAppPrompt }: BottomNavProps) {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-30 bg-[--color-background]">
+    <nav className="fixed bottom-0 left-0 right-0 z-30 bg-[#FAF9F6]">
       <div className="h-[0.5px] bg-neutral-200" />
       <div className="max-w-2xl mx-auto flex items-center justify-center gap-16 h-[56px]">
         {/* Explore */}

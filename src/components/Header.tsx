@@ -13,11 +13,11 @@ export default function Header({ locationName, onLocationChange }: HeaderProps) 
 
   return (
     <>
-      <header className="sticky top-0 z-30 bg-[--color-background]">
+      <header className="sticky top-0 z-30 bg-[#FAF9F6]">
         <div className="max-w-2xl mx-auto px-4 pt-3 pb-2">
           <button
             onClick={() => setShowSearch(true)}
-            className="w-full flex items-center justify-center gap-3 border border-neutral-200 rounded-full px-5 py-3 shadow-[0_1px_4px_rgba(0,0,0,0.08)] hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] transition-shadow bg-[--color-background]"
+            className="w-full flex items-center justify-center gap-3 border border-neutral-200 rounded-full px-5 py-3 shadow-[0_1px_4px_rgba(0,0,0,0.08)] hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] transition-shadow bg-[#FAF9F6]"
           >
             <svg
               className="w-[18px] h-[18px] text-[--color-text-primary] flex-shrink-0"
