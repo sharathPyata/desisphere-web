@@ -116,7 +116,7 @@ export default function ExploreContent() {
             </p>
           </div>
         ) : currentItems.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20">
+          <div className="flex flex-col items-center justify-center" style={{ minHeight: "calc(100vh - 190px)" }}
             <svg
               className="w-12 h-12 text-[--color-border] mb-3"
               fill="none"
