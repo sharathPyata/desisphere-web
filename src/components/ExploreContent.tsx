@@ -121,7 +121,7 @@ export default function ExploreContent() {
               No {activeTab === "food" ? "restaurants" : activeTab} nearby
             </p>
             <p className="text-xs text-[--color-text-secondary] mt-1">
-              Try a different location
+              Please try a different location
             </p>
           </div>
         ) : (
