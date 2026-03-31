@@ -8,8 +8,8 @@ interface ExploreTabsProps {
 }
 
 const TABS: { key: TabType; label: string }[] = [
-  { key: "homes", label: "Homes" },
   { key: "food", label: "Food" },
+  { key: "homes", label: "Homes" },
   { key: "services", label: "Services" },
   { key: "events", label: "Events" },
 ];

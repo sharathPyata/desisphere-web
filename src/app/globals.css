@@ -18,11 +18,12 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #FAF9F6;
 }
 
 body {
   color: var(--color-text-primary);
-  background: var(--color-background);
+  background: #FAF9F6;
 }
 
 /* Airbnb-style scrollbar */

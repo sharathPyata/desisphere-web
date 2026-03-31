@@ -126,38 +126,40 @@ export default function ExploreContent() {
           </div>
         ) : (
           <>
-            {currentItems.map((item) => {
-              const isRestaurant = "businessName" in item;
-              return (
-                <ListingCard
-                  key={item.id}
-                  name={
-                    isRestaurant
-                      ? (item as Restaurant).businessName
-                      : (item as Home | Service | Event).userName
-                  }
-                  type={
-                    isRestaurant
-                      ? (item as Restaurant).businessType
-                      : "homeType" in item
-                        ? (item as Home).homeType
-                        : "serviceType" in item
-                          ? (item as Service).serviceType
-                          : (item as Event).eventType
-                  }
-                  profilePicUrl={item.profilePicUrl}
-                  imageUrls={item.imageUrls}
-                  description={item.description}
-                  distance={item.distance}
-                  updatedAt={item.updatedAt}
-                  favoritesCount={item.favoritesCount}
-                  onImageClick={(images, index) =>
-                    setViewer({ images, index })
-                  }
-                  onAppPrompt={(msg) => setPromptMessage(msg)}
-                />
-              );
-            })}
+            <div>
+              {currentItems.map((item) => {
+                const isRestaurant = "businessName" in item;
+                return (
+                  <ListingCard
+                    key={item.id}
+                    name={
+                      isRestaurant
+                        ? (item as Restaurant).businessName
+                        : (item as Home | Service | Event).userName
+                    }
+                    type={
+                      isRestaurant
+                        ? (item as Restaurant).businessType
+                        : "homeType" in item
+                          ? (item as Home).homeType
+                          : "serviceType" in item
+                            ? (item as Service).serviceType
+                            : (item as Event).eventType
+                    }
+                    profilePicUrl={item.profilePicUrl}
+                    imageUrls={item.imageUrls}
+                    description={item.description}
+                    distance={item.distance}
+                    updatedAt={item.updatedAt}
+                    favoritesCount={item.favoritesCount}
+                    onImageClick={(images, index) =>
+                      setViewer({ images, index })
+                    }
+                    onAppPrompt={(msg) => setPromptMessage(msg)}
+                  />
+                );
+              })}
+            </div>
             <AppDownloadBanner />
           </>
         )}
